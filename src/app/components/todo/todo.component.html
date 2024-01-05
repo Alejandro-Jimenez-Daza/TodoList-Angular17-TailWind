@@ -1,0 +1,34 @@
+<section class="todolist-wrapper">
+    <h1 class="title">TODO APP</h1>
+    <div class="new-todo">
+        <input type="text" (keydown.enter)="addTodo()" placeholder="Escribe una nueva tarea" [formControl]="newTodo">
+        
+        <button (click)="addTodo()">+</button>
+    </div>
+
+    <div class="filters">
+        <button (click)="changeFilter('all')" [class.active]="filter() === 'all'">Todos</button>
+        <button (click)="changeFilter('active')" [class.active]="filter() === 'active'">Activos</button>
+        <button (click)="changeFilter('completed')" [class.active]="filter() === 'completed'">Completados</button>
+    </div>
+
+    <ul class="todolist">
+        @for (todo of todoListFiltered(); track todo.id) {
+            @if (todo.editing) {
+                <li class="todo-editing">
+                    <input type="text" placeholder="Editar tarea" [value]="todo.title" (keydown.enter)="saveTitleTodo(todo.id, $event)">
+                </li>
+
+            } @else{
+                <li class="todo">
+                    <input type="checkbox" [checked]="todo.completeed" (click)="toggleTodo(todo.id)">
+                    <label>{{ todo.title }}</label>
+                    @if (!todo.completeed) {<button (click)="updateTodoEditingMode(todo.id)">Editar</button>}
+                    <button class="text-red-500" (click)="removeTodo(todo.id)">Eliminar</button>
+                </li>
+            }
+        }
+        
+    </ul>
+
+</section>

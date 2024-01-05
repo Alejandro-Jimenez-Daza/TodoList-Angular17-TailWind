@@ -1,0 +1,48 @@
+.todolist-wrapper {
+    @apply bg-background-200 p-8 w-fit mt-8 mx-auto rounded-lg;
+
+}
+.title {
+    @apply text-3xl font-bold text-center mb-4;
+}
+.new-todo{
+    @apply relative flex items-center rounded-lg overflow-hidden;
+}
+.new-todo input{
+    @apply w-64 p-2 rounded-lg bg-background-300;
+}
+.new-todo button{
+    @apply absolute right-0 bg-background-400 text-lg font-black h-full px-2;
+}
+.filters {
+    @apply flex justify-end gap-2 my-2;
+}
+.filters button{
+    @apply px-2 rounded-lg bg-background-300;
+}
+.filters button.active {
+    @apply bg-background-400;
+}
+.todolist {
+    @apply flex flex-col gap-2;
+}
+
+.todolist li {
+    @apply flex bg-background-300 px-4 py-2 rounded-lg items-center gap-2;
+}
+
+.todolist li.todo label {
+    @apply flex-1;
+}
+.todolist li.todo:hover button {
+    @apply block;
+}
+.todolist li.todo button{
+    @apply hidden text-xs
+}
+.todolist li.todo input[type = "checkbox"]{
+    @apply w-4 h-4 cursor-pointer;
+}
+.todolist li.todo-editing input[type="text"]{
+    @apply w-full bg-background-400 rounded-lg px-2 outline-none;
+}
